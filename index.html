@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ZeroPS: High-quality Cross-modal Knowledge Transfer for Zero-Shot 3D Part
+  Segmentation">
+  <meta name="keywords" content="3D Part Segmentation, zero-shot, vision-language model, point clouds">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZeroPS</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container ">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ZeroPS: High-quality Cross-modal Knowledge Transfer for Zero-Shot
+              3D Part
+              Segmentation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/Luis2088">Yuheng Xue</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=UhjTC7AAAAAJ&hl=en&oi=ao">Nenglun
+                  Chen</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=Q5Ild8UAAAAJ&hl=en&oi=ao">Jun
+                  Liu</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=U3GWBDwAAAAJ&hl=en&oi=ao">Wenyun Sun</a><sup>1</sup>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Nanjing University of Information Science and Technology,
+                <sup>2</sup>Singapore University of Technology and Design</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2311.14262.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="#myVideo" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/Luis2088/ZeroPS" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- <span class="link-block">
+                <a href="./static/slides.pdf"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-desktop"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span> -->
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container" style="text-align: center;">
+      <div class="hero-body">
+        <img src="./static/images/teaser1.gif" class="teaser-image" alt="teaser image." />
+        <hr style="border: none; height: 1px; background-color: black;">
+        <img src="./static/images/teaser2.gif" class="teaser-image" alt="teaser image." />
+        <hr style="border: none; height: 1px; background-color: black;">
+        <img src="./static/images/teaser3.gif" class="teaser-image" alt="teaser image." />
+
+        <h2 class="subtitle has-text-centered">
+          Some examples of our method on zero-shot instance-level part segmentation. The first row is the input and the
+          other row is the output.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recently, many 2D pretrained foundational models have demonstrated impressive zero-shot prediction
+              capabilities.
+              In this work, we design a novel pipeline for zero-shot 3D part segmentation, called ZeroPS.
+              It high-quality transfers knowledge from 2D pretrained foundational models to 3D point clouds.
+              The main idea of our approach is to explore the natural relationship between multi-view correspondences
+              and the prompt mechanism of foundational models and build bridges on it.
+              Our pipeline consists of two components: 1) a self-extension component that extends 2D groups from a
+              single viewpoint to spatial global-level 3D groups;
+              2) a multi-modal labeling component that introduces a two-dimensional checking mechanism to vote each 2D
+              predicted bounding box to the best matching 3D part, and a Class Non-highest Vote Penalty function to
+              refine the Vote Matrix.
+              Additionally, a merging algorithm is included to merge part-level 3D groups.
+              Extensive evaluation of three zero-shot segmentation tasks on PartnetE datasets, achieving
+              state-of-the-art results with significant improvements (+19.6%, +5.2% and +4.9%, respectively) over
+              existing methods.
+              Our proposed approach does not need any training, fine-tuning or learnable parameters. It is hardly
+              affected by domain shift.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 id="myVideo" class="title is-3">Main Idea</h2>
+          <div class="publication-video">
+            <video class="video-border" controls>
+              <source src="./static/images/video.mp4" type="video/mp4">
+              您的浏览器不支持 HTML5 video 标签。
+            </video>
+          </div>
+        </div>
+      </div>
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="is-centered">
+        <h2 class="title is-3">Overall Pipeline</h2>
+        <img src="./static/images/pipeline.png" class="pipeline" alt="" />
+      </div>
+      <p>
+        Given a 3D object point cloud, instance-level parts are obtained. Next given a text prompt, each part gets a
+        label.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="is-centered">
+        <h2 class="title is-3">Local-level vs. Global-level</h2>
+        <img src="./static/images/localvsglobal.png" class="Local-level vs. Global-level" alt="" width="60%" />
+      </div>
+      <p>
+        Zero-shot part segmentation result of our method. Left: 'Global-level Merge' settings (T = 0.3). Middle:
+        'Local-level Merge'
+        settings (T = 0.1). Right: 'Local-level Merge' settings (T = 0.3).
+      </p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="is-centered">
+        <h2 class="title is-3">Comparison with the Existing Method.</h2>
+        <img src="./static/images/comparePartslip.png" class="comparePartslip" alt="" width="60%" />
+      </div>
+      <p>
+        Zero-shot part segmentation result of <a
+          href="https://openaccess.thecvf.com/content/CVPR2023/papers/Liu_PartSLIP_Low-Shot_Part_Segmentation_for_3D_Point_Clouds_via_Pretrained_CVPR_2023_paper.pdf">PartSLIP
+          (CVPR2023)</a> and ours. Left: Input. Middle: PartSlip. Right: Ours.
+      </p>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="is-centered">
+        <h2 class="title is-3">Quantitative Comparison</h2>
+        <img src="./static/images/quantitative_comparison.png" class="quantitative_comparison" alt="" width="100%" />
+      </div>
+      <p>
+        Our ZeroPS demonstrates impressive zero-shot performances and achieves state-of-the-art results with significant
+        improvements over existing methods.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code> @article{xue2023zerops,
+      title={ZeroPS: High-quality Cross-modal Knowledge Transfer for Zero-Shot 3D Part Segmentation},
+      author={Xue, Yuheng and Chen, Nenglun and Liu, Jun and Sun, Wenyun},
+      journal={arXiv preprint arXiv:2311.14262},
+      year={2023}
+    }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/pdf/2311.14262.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/Luis2088/ZeroPS" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
